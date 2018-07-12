@@ -84,7 +84,7 @@ server.on("request", function(request, respond){
 var my_url_path = url.parse(request.url).pathname;
 
 var my_url_value = url.parse(request.url).query;
-//path name is what follows after port a name or (/);
+//path name is what follows after port, a name or (/);
 //query is what follows a pathname, anything after pathname and (?) ie. localhost:2000/home?2
 
 //create router function based on the path name given in url actually mor like if else statements
@@ -101,6 +101,7 @@ if(my_url_path == "/" || my_url_path == ""){// home page router
    //do something
   return my_home_function(request, respond);
    //call a home function and pass request and response server objects
+  //we used this to send data back to user browser or acess data from user
 }
 
 else if(my_url_path == "/contactPage"){//contact page router
@@ -133,7 +134,8 @@ function my_home_function(request, respond){
 
   //end you response to the browser
   respond.end();
-  //you can also send data back with respond.end() like how you do with response.write();
+  //you can also send data back with respond.end() like how you do with response.write(), i.e response.end("hello");
+  //no writing or transmition can be done after respond.end() is called. imagine functions "return" statement
   
 }
 
@@ -146,6 +148,7 @@ function my_contact_function (request, respond){
   var my_form = `
   <input type = "text" id="name_filed" Placeholder="your name here">
   <!-- forms are self closing no need for end tag -->
+  <!-- use normal html form methods -->
   <input type ="email" id="email_field" placeholder="you email here">
   <input type ="number" id="age_field" placeholder ="you age here">
    <!--send form data button -->
@@ -167,6 +170,8 @@ function form_url_make(){
 //remeber the order you adding the values you will need it when retrieving on the server
 
 window.open("http://localhost:2000/form?"+name.value+"&"+email.value+"&"+age.value);
+//we add " .value" i.e name.value because var name on its own will retrieve evrything
+//acessible about the form, but what we want is the inputed value. hence " .value"
 
 //you can use form http post methods//
 //to secure data you may need to encode this "encodeURI"
