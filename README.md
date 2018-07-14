@@ -14,7 +14,10 @@ Added lots of comments and why in some cases
 
 ++++++++++++++++++++++++++++++++++++++++++++++++
 
-To start, 
+# To start, 
+follow instruction on youtube here https://www.youtube.com/user/PtNkh
+
+or
 
 1) make sure you have git and nodejs installed
 2) Download this repository
